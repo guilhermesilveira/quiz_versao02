@@ -44,7 +44,11 @@ function selecionaPergunta(perguntaMomento) {
   for (const opcao of perguntaMomento.opcoes) {
     const elementoOpcoes = document.createElement("button"); //cria botao com alternativas
     elementoOpcoes.textContent = opcao;
-    elementoOpcoes.addEventListener("click", () => respostaClicada(opcao));
+    // elementoOpcoes.onclick = respostaClicada
+    elementOpcoes.onclick = function() {
+      respostaClicada(opcao);
+    };
+    // elementoOpcoes.addEventListener("click", () => respostaClicada(opcao));
     caixaOpcoes.appendChild(elementoOpcoes);
   }
 }
