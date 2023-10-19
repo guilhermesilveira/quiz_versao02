@@ -55,6 +55,11 @@ function respostaClicada(opcaoSelecionada) {
   // suporte a respostas posicionais
   const posicao = perguntaMomento.resposta;
   const respostaEsperada = perguntaMomento.opcoes[posicao];
+
+  // para saber mais
+  // boa pratica é usar o ===
+  // pode ser ==
+  // === vai ser importante comentar ===> 1 !== "1", 1 == "1"
   if (opcaoSelecionada === respostaEsperada) {
     pontos++;
   }
