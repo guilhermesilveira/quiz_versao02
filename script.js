@@ -2,19 +2,20 @@ const listaPerguntas = [
   {
     pergunta: "Em que ano estamos?",
     opcoes: ["2021", "2022", "2032", "2023"],
-    resposta: "2023",
+    resposta: 3,
   },
   {
     pergunta: "Em que século estamos?",
     opcoes: ["XX", "XXI", "XIX", "XV"],
-    resposta: "XXI",
+    resposta: 1,
   },
   {
     pergunta: "Em que país nasceu Pelé?",
     opcoes: ["USA", "Canada", "Brasil", "África do Sul"],
-    resposta: "Brasil",
+    resposta: 2,
   },
 ];
+
 
 let perguntaAtual = 0;
 let pontos = 0;
@@ -30,7 +31,9 @@ function pergunta() {
     const perguntaMomento = listaPerguntas[perguntaAtual];
     textoPergunta.textContent = perguntaMomento.pergunta;
     caixaOpcoes.textContent = "";
+
     selecionaPergunta(perguntaMomento);
+    
   } else {
     mostraResultado();
   }
@@ -48,9 +51,14 @@ function selecionaPergunta(perguntaMomento) {
 
 function respostaClicada(opcaoSelecionada) {
   const perguntaMomento = listaPerguntas[perguntaAtual];
-  if (opcaoSelecionada === perguntaMomento.resposta) {
+  
+  // suporte a respostas posicionais
+  const posicao = perguntaMomento.resposta;
+  const respostaEsperada = perguntaMomento.opcoes[posicao];
+  if (opcaoSelecionada === respostaEsperada) {
     pontos++;
   }
+  
   perguntaAtual++;
   pergunta();
 }
